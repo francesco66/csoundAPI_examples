@@ -12,4 +12,4 @@ I'm new to those GUI library so take this examples like an experiment.
 * ltcltk - http://www.tset.de/ltcltk/
 * wxLua - http://wxlua.sourceforge.net/
 * lgi GTK - https://github.com/pavouk/lgi
-
+* lqt Qt - http://code.google.com/p/lqt/
