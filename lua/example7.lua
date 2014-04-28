@@ -73,38 +73,45 @@ outs aout, aout
 endin
 ]]
 
-local c = luaCsnd6.Csound()    -- create an instance of Csound
-c:SetOption("-odac")  -- Set option for Csound
-c:SetOption("-m7")  -- Set option for Csound
-c:CompileOrc(orc)     -- Compile Orchestra from String
+-- create an instance of Csound
+local c = luaCsnd6.Csound()
+-- Set option for Csound
+c:SetOption("-odac")
+-- Set option for Csound
+c:SetOption("-m7")
+-- Compile Orchestra from String
+c:CompileOrc(orc)
 
 local sco = "i1 0 60\n"
 
-c:ReadScore(sco)     -- Read in Score generated from notes 
-c:Start()             -- When compiling from strings, this call is necessary before doing any performing
-
+-- Read in Score generated from notes 
+c:ReadScore(sco)
+-- When compiling from strings, this call is necessary before doing any performing
+c:Start()
 
 -- The following is our main performance loop. We will perform one block of sound at a time 
 -- and continue to do so while it returns 0, which signifies to keep processing.  
 
+-- create RandomLine for use with Amplitude
+amp = RandomLine:new(.4, .2)
+-- create RandomLine for use with Frequency
+freq = RandomLine:new(400, 80)
 
-amp = RandomLine:new(.4, .2)    -- create RandomLine for use with Amplitude
-freq = RandomLine:new(400, 80)  -- create RandomLine for use with Frequency 
-
-c:SetChannel("amp", amp:getValue())     -- Initialize channel value before running Csound
-c:SetChannel("freq", freq:getValue())   -- Initialize channel value before running Csound
+-- Initialize channel value before running Csound
+c:SetChannel("amp", amp:getValue())
+-- Initialize channel value before running Csound
+c:SetChannel("freq", freq:getValue())
 
 --print(amp:getValue())
 --print(freq:getValue())
 
 while (c:PerformKsmps() == 0) do
-    c:SetChannel("amp", amp:getValue())   -- update channel value 
-    c:SetChannel("freq", freq:getValue()) -- update channel value 
+    -- update channel value
+    c:SetChannel("amp", amp:getValue())
+    -- update channel value
+    c:SetChannel("freq", freq:getValue())
 end
 
 c:Stop()
-
-
-
 
 

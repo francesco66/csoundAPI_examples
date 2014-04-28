@@ -13,6 +13,11 @@
 -- as it is a native thread.  We use the CsoundPerformanceThread's InputMessage()
 -- function to ensure that the message is processed in a thread-safe manner. 
 
+-- This example uses wxLua:
+-- "wxLua is a Lua scripting language wrapper around the wxWidgets cross-platform
+-- C++ GUI library".
+-- http://wxlua.sourceforge.net/
+
 require "luaCsnd6"
 require "wx"
 

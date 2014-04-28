@@ -28,8 +28,8 @@
 -- class. 
 --
 -- Note, the three examples here are indicated with comments.  To listen to the examples,
--- look for the lines that have c.ReadScore(sco) (lines 80-82), uncomment the one
--- you want to hear, and comment out the others. 
+-- look for the lines that have c.ReadScore(sco) (lines 86-90), uncomment the one
+-- you want to hear, and comment out the others.
 
 require "luaCsnd6"
 
@@ -52,9 +52,16 @@ endin
 -- Example 1 - Static Score
 local sco = "i1 0 1 0.5 8.00"
 
-local c = luaCsnd6.Csound()    -- create an instance of Csound
-c:SetOption("-odac")  -- Set option for Csound
-c:CompileOrc(orc)     -- Compile Orchestra from String
+-- Create an instance of the Csound object
+local c = luaCsnd6.Csound()
+
+-- Using SetOption() to configure Csound
+-- Note: use only one commandline flag at a time
+c:SetOption("-odac")
+
+-- Compile the Csound Orchestra string
+c:CompileOrc(orc)
+
 
 -- Example 2 - Generating Score string with a loop
 local sco2 = ""
@@ -63,10 +70,10 @@ for i=0, 12 do
 end
 --print(sco2)
 
--- Example 3 - Generating Score using intermediate data structure (list of lists),
---             then converting to String.
-local vals = {}           --initialize a list to hold lists of values 
-for i=0, 12 do --populate that list
+-- Example 3 - Generating Score using intermediate data structure (table of strings),
+-- to hold lists of values populate that list
+local vals = {}
+for i=0, 12 do
     vals[#vals+1] = string.format("i 1 %f .25 0.5 8.%02g", i*0.25, (math.random(0,15)))
 end
 
@@ -75,20 +82,19 @@ sco3 = table.concat(vals, "\n")
 --print(vals)
 --print(sco3)
 
+-- Read in Score from pre-written String
+c:ReadScore(sco)
+-- Read in Score from loop-generated String
+--c:ReadScore(sco2)
+-- Read in Score from loop-generated String
+--c:ReadScore(sco3)
 
-c:ReadScore(sco)      -- Read in Score from pre-written String
---c:ReadScore(sco2)     -- Read in Score from loop-generated String
---c:ReadScore(sco3)     -- Read in Score from loop-generated String
-
-c:Start()             -- When compiling from strings, this call is necessary before doing any performing
+-- When compiling from strings, this call is necessary before doing any performing
+c:Start()
 
 -- The following is our main performance loop. We will perform one block of sound at a time 
 -- and continue to do so while it returns 0, which signifies to keep processing.  
-
 while (c:PerformKsmps() == 0) do end
 
-
 c:Stop()
-
-
 

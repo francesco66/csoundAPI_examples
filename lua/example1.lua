@@ -6,15 +6,22 @@
 -- compiling a pre-existing CSD, calling Perform to run Csound to completion,
 -- then Stop and exit.  
 
--- The first thing we do is import the csnd6 module, which is the module 
--- containing the Python interface to the Csound API.
+-- The first thing we do is import the luaCsnd6 module, which is the module 
+-- containing the Lua interface to the Csound API.
 
 require "luaCsnd6"
 
-local c = luaCsnd6.Csound()        -- Create an instance of the Csound object
-c:Compile('test1.csd')    -- Compile a pre-defined test1.csd file
-c:Perform()               -- This call runs Csound to completion
-c:Stop()                  -- At this point, Csound is already stopped, but this call is here
-                          -- as it is something that you would generally call in real-world 
-                          -- contexts 
+-- Create an instance of the Csound object
+local c = luaCsnd6.Csound()
+
+-- Compile a pre-defined test1.csd file
+c:Compile('test1.csd')
+
+-- This call runs Csound to completion
+c:Perform()
+
+-- At this point, Csound is already stopped, but this call is here
+-- as it is something that you would generally call in real-world 
+-- contexts 
+c:Stop()
 

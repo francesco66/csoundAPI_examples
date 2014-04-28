@@ -2,7 +2,7 @@
 -- Author: Steven Yi <stevenyi@gmail.com>
 -- 2013.10.28
 --
--- This example continues on from Example 10 and introduces a 
+-- This example continues on from Example 9 and introduces a
 -- ChannelUpdater object. The ChannelUpdater will create and 
 -- store a CsoundMYFLTArray that is wrapping a Csound Channel.
 -- Additionally, it will store and call an object that has a 
@@ -97,16 +97,21 @@ outs aout, aout
 endin
 ]]
 
-local c = luaCsnd6.Csound()    -- create an instance of Csound
-c:SetOption("-odac")  -- Set option for Csound
-c:SetOption("-m7")  -- Set option for Csound
-c:CompileOrc(orc)     -- Compile Orchestra from String
+-- create an instance of Csound
+local c = luaCsnd6.Csound()
+-- Set option for Csound
+c:SetOption("-odac")
+-- Set option for Csound
+c:SetOption("-m7")
+-- Compile Orchestra from String
+c:CompileOrc(orc)
 
 local sco = "i1 0 60\n"
 
-c:ReadScore(sco)     -- Read in Score generated from notes 
-
-c:Start()             -- When compiling from strings, this call is necessary before doing any performing
+-- Read in Score generated from notes
+c:ReadScore(sco)
+-- When compiling from strings, this call is necessary before doing any performing
+c:Start()
 
 -- Create a set of ChannelUpdaters
 channels = {ChannelUpdater:new(c, "amp", RandomLine:new(.4, .2)),
@@ -119,12 +124,11 @@ for i, chn in ipairs(channels) do
 end
 
 while (c:PerformKsmps() == 0) do
-    for i, chn in ipairs(channels) do   -- update all channel values
+    -- update all channel values
+    for i, chn in ipairs(channels) do
         chn:update()
     end
 end
 
 c:Stop()
-
-
 

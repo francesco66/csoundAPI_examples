@@ -11,6 +11,12 @@
 -- PerformKsmps to ensure thread-safety.  For this example, the updating
 -- generally works as there are few things demanding computation. 
 
+-- This example uses ltcltk:
+-- "ltcltk is a binding of the Tcl skripting language and, more importantly,
+-- of the Tk toolkit to the lua skripting language. It consists of 2 modules,
+-- ltcl and ltk".
+-- http://www.tset.de/ltcltk/
+
 require "luaCsnd6"
 require "ltk"
 

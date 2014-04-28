@@ -11,6 +11,11 @@
 -- PerformKsmps to ensure thread-safety.  For this example, the updating
 -- generally works as there are few things demanding computation. 
 
+-- This example uses lgi,
+-- "LGI is gobject-introspection based dynamic Lua binding to GObject based libraries.
+-- It allows using GObject-based libraries directly from Lua".
+-- https://github.com/pavouk/lgi
+
 require "luaCsnd6"
 local lgi = require 'lgi'
 local Gtk = lgi.require('Gtk')

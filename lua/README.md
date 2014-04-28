@@ -1,6 +1,7 @@
 # Csound 6 - Lua API Examples
 Author: Francesco Armando Porta <ilterzouomo@fastwebnet.it>
 2013.11.8
+2014.4.28
 
 This folder contains examples for using the Csound API in Lua. They start with a minimal usage of Csound and each example afterwards builds upon the previous one.  There are numerous comments in each file to explain what is new in the example as well as explain how the new things may be used. 
 

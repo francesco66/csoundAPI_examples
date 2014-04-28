@@ -71,19 +71,26 @@ outs aout, aout
 endin
 ]]
 
-local c = luaCsnd6.Csound()    -- create an instance of Csound
-c:SetOption("-odac")  -- Set option for Csound
-c:SetOption("-m7")  -- Set option for Csound
-c:CompileOrc(orc)     -- Compile Orchestra from String
+-- create an instance of Csound
+local c = luaCsnd6.Csound()
+-- Set option for Csound
+c:SetOption("-odac")
+-- Set option for Csound
+c:SetOption("-m7")
+-- Compile Orchestra from String
+c:CompileOrc(orc)
 
 local sco = "i1 0 60\n"
 
-c:ReadScore(sco)     -- Read in Score generated from notes 
+-- Read in Score generated from notes
+c:ReadScore(sco)
+-- When compiling from strings, this call is necessary before doing any performing
+c:Start()
 
-c:Start()             -- When compiling from strings, this call is necessary before doing any performing
-
-ampChannel = luaCsnd6.CsoundMYFLTArray(1)    -- create a CsoundMYFLTArray of size 1 
-freqChannel = luaCsnd6.CsoundMYFLTArray(1)   -- create a CsoundMYFLTArray of size 1 
+-- create a CsoundMYFLTArray of size 1
+ampChannel = luaCsnd6.CsoundMYFLTArray(1)
+-- create a CsoundMYFLTArray of size 1
+freqChannel = luaCsnd6.CsoundMYFLTArray(1)
 
 c:GetChannelPtr(ampChannel:GetPtr(), "amp", luaCsnd6.CSOUND_CONTROL_CHANNEL + luaCsnd6.CSOUND_INPUT_CHANNEL)
 c:GetChannelPtr(freqChannel:GetPtr(), "freq", luaCsnd6.CSOUND_CONTROL_CHANNEL + luaCsnd6.CSOUND_INPUT_CHANNEL)
@@ -91,7 +98,8 @@ c:GetChannelPtr(freqChannel:GetPtr(), "freq", luaCsnd6.CSOUND_CONTROL_CHANNEL + 
 amp = RandomLine:new(.4, .2)
 freq = RandomLine:new(400, 80)
 
-ampChannel:SetValue(0, amp:getValue())    -- note we are now setting values on the CsoundMYFLTArray
+-- note we are now setting values on the CsoundMYFLTArray
+ampChannel:SetValue(0, amp:getValue())
 freqChannel:SetValue(0, freq:getValue())
 
 --print(amp:getValue())

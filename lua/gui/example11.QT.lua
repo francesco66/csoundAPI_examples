@@ -13,6 +13,12 @@
 -- as it is a native thread.  We use the CsoundPerformanceThread's InputMessage()
 -- function to ensure that the message is processed in a thread-safe manner. 
 
+-- This example uses lqt:
+-- "lqt is a Lua binding to the Qt framework. It is an automated binding generated
+-- from the Qt headers, and covers almost all classes and methods from supported
+-- Qt modules".
+-- https://github.com/mkottman/lqt
+
 require "luaCsnd6"
 require "qtcore"
 require "qtgui"

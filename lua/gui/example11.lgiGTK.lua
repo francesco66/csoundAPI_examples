@@ -13,6 +13,11 @@
 -- as it is a native thread.  We use the CsoundPerformanceThread's InputMessage()
 -- function to ensure that the message is processed in a thread-safe manner. 
 
+-- This example uses lgi,
+-- "LGI is gobject-introspection based dynamic Lua binding to GObject based libraries.
+-- It allows using GObject-based libraries directly from Lua".
+-- https://github.com/pavouk/lgi
+
 require "luaCsnd6"
 local lgi = require 'lgi'
 local Gtk = lgi.require('Gtk')

@@ -3,7 +3,7 @@
 -- 2013.10.28
 --
 -- In this example, we move from using an external CSD file to 
--- embedding our Csound ORC and SCO code within our Python project.
+-- embedding our Csound ORC and SCO code within our Lua project.
 -- Besides allowing encapsulating the code within the same file,
 -- using the CompileOrc() and CompileSco() API calls is useful when
 -- the SCO or ORC are generated, or perhaps coming from another 
@@ -11,7 +11,7 @@
 
 require "luaCsnd6"
 
--- Defining our Csound ORC code within a triple-quoted, multline String
+-- Defining our Csound ORC code within a multline String
 orc = [[
 sr=44100
 ksmps=32
@@ -24,17 +24,27 @@ outs aout, aout
 endin
 ]]
 
-
 -- Defining our Csound SCO code 
 sco = "i1 0 1"
 
+-- Create an instance of the Csound object
 local c = luaCsnd6.Csound()
-c:SetOption("-odac")  -- Using SetOption() to configure Csound
-                      -- Note: use only one commandline flag at a time
 
-c:CompileOrc(orc)     -- Compile the Csound Orchestra string
-c:ReadScore(sco)      -- Compile the Csound SCO String
-c:Start()  -- When compiling from strings, this call is necessary before doing any performing
-c:Perform()  -- Run Csound to completion
+-- Using SetOption() to configure Csound
+-- Note: use only one commandline flag at a time
+c:SetOption("-odac")
+
+-- Compile the Csound Orchestra string
+c:CompileOrc(orc)
+
+-- Compile the Csound SCO String
+c:ReadScore(sco)
+
+-- When compiling from strings, this call is necessary before doing any performing
+c:Start()
+
+-- Run Csound to completion
+c:Perform()
+
 c:Stop()
 

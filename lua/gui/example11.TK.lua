@@ -13,6 +13,12 @@
 -- as it is a native thread.  We use the CsoundPerformanceThread's InputMessage()
 -- function to ensure that the message is processed in a thread-safe manner. 
 
+-- This example uses ltcltk:
+-- "ltcltk is a binding of the Tcl skripting language and, more importantly,
+-- of the Tk toolkit to the lua skripting language. It consists of 2 modules,
+-- ltcl and ltk".
+-- http://www.tset.de/ltcltk/
+
 require "luaCsnd6"
 require "ltk"
 

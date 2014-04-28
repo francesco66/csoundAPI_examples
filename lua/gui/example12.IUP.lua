@@ -11,6 +11,13 @@
 -- PerformKsmps to ensure thread-safety.  For this example, the updating
 -- generally works as there are few things demanding computation. 
 
+-- This example uses IUP:
+-- "IUP is a multi-platform toolkit for building graphical user interfaces.
+-- It offers a simple API in three basic languages: C, Lua and LED. IUP's purpose
+-- is to allow a program source code to be compiled in different systems without
+-- any modification".
+-- http://www.tecgraf.puc-rio.br/iup/
+
 require "luaCsnd6"
 require "iuplua"
 

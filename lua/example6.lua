@@ -3,7 +3,7 @@
 -- 2013.10.28
 --
 -- This example continues on from Example 5, rewriting the example using
--- a Class called Note. The note example has its __str__ method implemented
+-- a Class called Note. The note example has its tostring method implemented
 -- to generate a well-formatted Csound SCO note.  
 --
 -- This example also shows how a list of notes could be used multiple times.
@@ -60,13 +60,20 @@ outs aout, aout
 endin
 ]]
 
-local c = luaCsnd6.Csound()    -- create an instance of Csound
-c:SetOption("-odac")  -- Set option for Csound
-c:CompileOrc(orc)     -- Compile Orchestra from String
+-- create an instance of Csound
+local c = luaCsnd6.Csound()
 
+-- Set option for Csound
+c:SetOption("-odac")
 
-local notes = {}      --initialize a table to hold lists of values 
-for i=0, 12 do --populate that table
+-- Compile Orchestra from String
+c:CompileOrc(orc)
+
+--initialize a table to hold lists of values
+local notes = {}
+
+--populate that table
+for i=0, 12 do
     notes[#notes+1] = Note:new{1, i * .25, .25, 0.5, math.random(60,75)}
 end
 
@@ -86,13 +93,14 @@ end
 
 print(sco)
 
-c:ReadScore(sco)     -- Read in Score generated from notes 
+-- Read in Score generated from notes 
+c:ReadScore(sco)
 
-c:Start()             -- When compiling from strings, this call is necessary before doing any performing
+-- When compiling from strings, this call is necessary before doing any performing
+c:Start()
 
 -- The following is our main performance loop. We will perform one block of sound at a time 
 -- and continue to do so while it returns 0, which signifies to keep processing.  
-
 while (c:PerformKsmps() == 0) do end
 
 c:Stop()

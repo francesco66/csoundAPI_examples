@@ -70,18 +70,24 @@ outs aout, aout
 endin
 ]]
 
-local c = luaCsnd6.Csound()    -- create an instance of Csound
-c:SetOption("-odac")  -- Set option for Csound
-c:SetOption("-m7")  -- Set option for Csound
-c:CompileOrc(orc)     -- Compile Orchestra from String
+-- create an instance of Csound
+local c = luaCsnd6.Csound()
+-- Set option for Csound
+c:SetOption("-odac")
+-- Set option for Csound
+c:SetOption("-m7")
+-- Compile Orchestra from String
+c:CompileOrc(orc)
 
 local sco = "i1 0 60\n"
 
-c:ReadScore(sco)     -- Read in Score generated from notes 
+-- Read in Score generated from notes
+c:ReadScore(sco)
+-- When compiling from strings, this call is necessary before doing any performing
+c:Start()
 
-c:Start()             -- When compiling from strings, this call is necessary before doing any performing
-
-ampChannel = createChannel(c, "amp")   -- uses utility method to create a channel and get a CsoundMYFLTArray
+-- uses utility method to create a channel and get a CsoundMYFLTArray
+ampChannel = createChannel(c, "amp")
 freqChannel = createChannel(c, "freq")
 
 amp = RandomLine:new(.4, .2)

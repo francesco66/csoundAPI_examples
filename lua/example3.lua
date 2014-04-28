@@ -24,16 +24,28 @@ endin
 -- Our Score for our project
 local sco = "i1 0 1"
 
-local c = luaCsnd6.Csound()    -- create an instance of Csound
-c:SetOption("-odac")  -- Set option for Csound
-c:CompileOrc(orc)     -- Compile Orchestra from String
-c:ReadScore(sco)      -- Read in Score from String
-c:Start()             -- When compiling from strings, this call is necessary before doing any performing
+-- create an instance of Csound
+local c = luaCsnd6.Csound()
+
+-- Using SetOption() to configure Csound
+-- Note: use only one commandline flag at a time
+c:SetOption("-odac")
+
+-- Compile the Csound Orchestra string
+c:CompileOrc(orc)
+
+-- Compile the Csound SCO String
+c:ReadScore(sco)
+
+-- When compiling from strings, this call is necessary before doing any performing
+c:Start()
+
+-- Run Csound to completion
+c:Perform()
 
 -- The following is our main performance loop. We will perform one block of sound at a time 
 -- and continue to do so while it returns 0, which signifies to keep processing.  We will
 -- explore this loop technique in further examples.
-
 while (c:PerformKsmps() == 0) do end
 
 c:Stop()

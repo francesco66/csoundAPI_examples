@@ -11,6 +11,11 @@
 -- PerformKsmps to ensure thread-safety.  For this example, the updating
 -- generally works as there are few things demanding computation. 
 
+-- This example uses wxLua:
+-- "wxLua is a Lua scripting language wrapper around the wxWidgets cross-platform
+-- C++ GUI library".
+-- http://wxlua.sourceforge.net/
+
 require "luaCsnd6"
 require "wx"
 

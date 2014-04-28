@@ -11,6 +11,12 @@
 -- PerformKsmps to ensure thread-safety.  For this example, the updating
 -- generally works as there are few things demanding computation. 
 
+-- This example uses lqt:
+-- "lqt is a Lua binding to the Qt framework. It is an automated binding generated
+-- from the Qt headers, and covers almost all classes and methods from supported
+-- Qt modules".
+-- https://github.com/mkottman/lqt
+
 require "luaCsnd6"
 require "qtcore"
 require "qtgui"
