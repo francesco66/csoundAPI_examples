@@ -1,7 +1,10 @@
 -- Example 11 - Graphical User Interfaces
 -- Author: Steven Yi <stevenyi@gmail.com>
 -- 2013.10.28
---
+-- for lua by:
+-- Francesco Porta <francescoarmandoporta@gmail.com>
+-- 2016
+
 -- This example demonstrates a slightly more advanced GUI example. 
 -- It uses a slider to allow setting the value of the frequency that
 -- the notes initiated by the button will play at.  

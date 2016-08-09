@@ -59,7 +59,7 @@ function RandomLine:getValue()
 end
 
 -- Our Orchestra for our project
-orc = [[
+local orc = [[
 sr=44100
 ksmps=32
 nchnls=2
@@ -96,9 +96,9 @@ c:Start()
 -- and continue to do so while it returns 0, which signifies to keep processing.  
 
 -- create RandomLine for use with Amplitude
-amp = RandomLine:new(.4, .2)
+local amp = RandomLine:new(.4, .2)
 -- create RandomLine for use with Frequency
-freq = RandomLine:new(400, 80)
+local freq = RandomLine:new(400, 80)
 
 -- Initialize channel value before running Csound
 c:SetChannel("amp", amp:getValue())

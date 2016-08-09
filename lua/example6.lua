@@ -20,8 +20,8 @@
 
 require "luaCsnd6"
 
+-- Convert MIDI Note Numbers to Csound PCH format
 function midi2pch(num)
-    -- Convert MIDI Note Numbers to Csound PCH format
     return string.format("%d.%02d", 3 + (num / 12), num % 12)
 end
 
@@ -81,7 +81,7 @@ for i=0, 12 do
 end
 
 -- now convert list of Note objects to string
-sco = ""
+local sco = ""
 for _,n in pairs(notes) do
     -- this implicitly calls the tostring method on the Note Class
     sco = sco .. n:toString() .. "\n"

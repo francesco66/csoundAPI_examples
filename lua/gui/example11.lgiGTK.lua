@@ -1,7 +1,10 @@
 -- Example 11 - Graphical User Interfaces
 -- Author: Steven Yi <stevenyi@gmail.com>
 -- 2013.10.28
---
+-- for lua by:
+-- Francesco Porta <francescoarmandoporta@gmail.com>
+-- 2016
+
 -- This example demonstrates a minimal Graphical User Interface application.
 -- The setup of Csound and starting of the CsoundPerformanceThread is done in 
 -- the global scripting space.  Afterwards, a Tkinter GUI is created that has
@@ -38,12 +41,16 @@ outs aout, aout
 endin
 ]]
 
-local c = luaCsnd6.Csound()    -- create an instance of Csound
-c:SetOption("-odac")  -- Set option for Csound
-c:SetOption("-m7")  -- Set option for Csound
-c:CompileOrc(orc)     -- Compile Orchestra from String
+-- create an instance of Csound
+local c = luaCsnd6.Csound()
+-- Set option for Csound
+c:SetOption("-odac")
+c:SetOption("-m7")
+-- Compile Orchestra from String
+c:CompileOrc(orc)
 
-c:Start()             -- When compiling from strings, this call is necessary before doing any performing
+-- When compiling from strings, this call is necessary before doing any performing
+c:Start()
 
 local perfThread = luaCsnd6.CsoundPerformanceThread(c)
 perfThread:Play()

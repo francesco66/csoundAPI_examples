@@ -57,7 +57,7 @@ function RandomLine:getValue()
 end
 
 -- Our Orchestra for our project
-orc = [[
+local orc = [[
 sr=44100
 ksmps=32
 nchnls=2
@@ -91,15 +91,15 @@ c:ReadScore(sco)
 c:Start()
 
 -- create a CsoundMYFLTArray of size 1
-ampChannel = luaCsnd6.CsoundMYFLTArray(1)
+local ampChannel = luaCsnd6.CsoundMYFLTArray(1)
 -- create a CsoundMYFLTArray of size 1
-freqChannel = luaCsnd6.CsoundMYFLTArray(1)
+local freqChannel = luaCsnd6.CsoundMYFLTArray(1)
 
 c:GetChannelPtr(ampChannel:GetPtr(), "amp", luaCsnd6.CSOUND_CONTROL_CHANNEL + luaCsnd6.CSOUND_INPUT_CHANNEL)
 c:GetChannelPtr(freqChannel:GetPtr(), "freq", luaCsnd6.CSOUND_CONTROL_CHANNEL + luaCsnd6.CSOUND_INPUT_CHANNEL)
 
-amp = RandomLine:new(.4, .2)
-freq = RandomLine:new(400, 80)
+local amp = RandomLine:new(.4, .2)
+local freq = RandomLine:new(400, 80)
 
 -- note we are now setting values on the CsoundMYFLTArray
 ampChannel:SetValue(0, amp:getValue())

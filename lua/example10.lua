@@ -54,9 +54,8 @@ function RandomLine:getValue()
     return self.base + (self.range * retVal)
 end
 
-
+-- Creates a Csound Channel and returns a CsoundMYFLTArray wrapper object
 function createChannel(csound, channelName)
-    -- Creates a Csound Channel and returns a CsoundMYFLTArray wrapper object
     local chn = luaCsnd6.CsoundMYFLTArray(1)
     csound:GetChannelPtr(chn:GetPtr(), channelName, 
         luaCsnd6.CSOUND_CONTROL_CHANNEL + luaCsnd6.CSOUND_INPUT_CHANNEL) 
@@ -81,7 +80,7 @@ end
 --------------------------------------------------------------
 
 -- Our Orchestra for our project
-orc = [[
+local orc = [[
 sr=44100
 ksmps=32
 nchnls=2
@@ -117,9 +116,11 @@ c:ReadScore(sco)
 c:Start()
 
 -- Create a set of ChannelUpdaters
-channels = {ChannelUpdater:new(c, "amp", RandomLine:new(.4, .2)),
+local channels = {
+			ChannelUpdater:new(c, "amp", RandomLine:new(.4, .2)),
             ChannelUpdater:new(c, "freq", RandomLine:new(400, 80)),
-            ChannelUpdater:new(c, "resonance", RandomLine:new(0.4, .3))}
+            ChannelUpdater:new(c, "resonance", RandomLine:new(0.4, .3))
+}
 
 -- Initialize all Channel Values
 for i, chn in ipairs(channels) do
