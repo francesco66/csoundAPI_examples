@@ -1,7 +1,10 @@
 -- Example 7 - Communicating continuous values with Csound's Channel System
 -- Author: Steven Yi <stevenyi@gmail.com>
 -- 2013.10.28
---
+-- for lua by:
+-- Francesco Porta <francescoarmandoporta@gmail.com>
+-- 2016
+
 -- This example introduces using Csound's Channel System to communicate 
 -- continuous control data (k-rate) from a host program to Csound. The 
 -- first thing to note is the RandomLine class. It takes in a base value

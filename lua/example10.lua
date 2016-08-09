@@ -1,7 +1,10 @@
 -- Example 10 - More efficient Channel Communications
 -- Author: Steven Yi <stevenyi@gmail.com>
 -- 2013.10.28
---
+-- for lua by:
+-- Francesco Porta <francescoarmandoporta@gmail.com>
+-- 2016
+
 -- This example continues on from Example 9 and introduces a
 -- ChannelUpdater object. The ChannelUpdater will create and 
 -- store a CsoundMYFLTArray that is wrapping a Csound Channel.

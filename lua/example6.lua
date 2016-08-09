@@ -1,7 +1,10 @@
 -- Example 6 - Generating Score
 -- Author: Steven Yi <stevenyi@gmail.com>
 -- 2013.10.28
---
+-- for lua by:
+-- Francesco Porta <francescoarmandoporta@gmail.com>
+-- 2016
+
 -- This example continues on from Example 5, rewriting the example using
 -- a Class called Note. The note example has its tostring method implemented
 -- to generate a well-formatted Csound SCO note.  
@@ -32,7 +35,7 @@ function Note:new(pfields)
     return o
 end
 
-function Note:tostring()
+function Note:toString()
     local retVal = {}
     for i, v in ipairs(self.pfields) do
         if(i == 5) then
@@ -81,14 +84,14 @@ end
 sco = ""
 for _,n in pairs(notes) do
     -- this implicitly calls the tostring method on the Note Class
-    sco = sco .. n:tostring() .. "\n"
+    sco = sco .. n:toString() .. "\n"
 end
 
 -- generate notes again transposed a Major 3rd up
 for _,n in pairs(notes) do
     n.pfields[5] = n.pfields[5] + 4
     n.pfields[2] = n.pfields[2] + .125
-    sco = sco .. n:tostring() .. "\n"
+    sco = sco .. n:toString() .. "\n"
 end
 
 print(sco)

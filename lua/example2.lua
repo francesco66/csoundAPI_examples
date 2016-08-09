@@ -1,7 +1,10 @@
 -- Example 2 - Compilation with Csound without CSD
 -- Author: Steven Yi <stevenyi@gmail.com>
 -- 2013.10.28
---
+-- for lua by:
+-- Francesco Porta <francescoarmandoporta@gmail.com>
+-- 2016
+
 -- In this example, we move from using an external CSD file to 
 -- embedding our Csound ORC and SCO code within our Lua project.
 -- Besides allowing encapsulating the code within the same file,
@@ -12,7 +15,7 @@
 require "luaCsnd6"
 
 -- Defining our Csound ORC code within a multline String
-orc = [[
+local orc = [[
 sr=44100
 ksmps=32
 nchnls=2
@@ -25,7 +28,7 @@ endin
 ]]
 
 -- Defining our Csound SCO code 
-sco = "i1 0 1"
+local sco = "i1 0 1"
 
 -- Create an instance of the Csound object
 local c = luaCsnd6.Csound()

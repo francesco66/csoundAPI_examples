@@ -1,7 +1,10 @@
 -- Example 3 - Using our own performance loop
 -- Author: Steven Yi <stevenyi@gmail.com>
 -- 2013.10.28
---
+-- for lua by:
+-- Francesco Porta <francescoarmandoporta@gmail.com>
+-- 2016
+
 -- In this example, we use a while loop to perform Csound one audio block at a time.
 -- This technique is important to know as it will allow us to do further processing
 -- safely at block boundaries.  We will explore the technique further in later examples.

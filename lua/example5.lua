@@ -1,7 +1,10 @@
 -- Example 5 - Generating Score
 -- Author: Steven Yi <stevenyi@gmail.com>
 -- 2013.10.28
---
+-- for lua by:
+-- Francesco Porta <francescoarmandoporta@gmail.com>
+-- 2016
+
 -- In this example, we will look at three techniques for generating our Score. 
 -- 
 -- The first is one we have already seen, which is to just write out the score
@@ -78,7 +81,7 @@ for i=0, 12 do
 end
 
 -- now convert that list of strings into a single string
-sco3 = table.concat(vals, "\n")
+local sco3 = table.concat(vals, "\n")
 --print(vals)
 --print(sco3)
 

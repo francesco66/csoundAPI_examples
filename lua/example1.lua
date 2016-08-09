@@ -1,6 +1,10 @@
 -- Example 1 - Simple Compilation with Csound
 -- Author: Steven Yi <stevenyi@gmail.com>
 -- 2013.10.28
+-- for lua by:
+-- Francesco Porta <francescoarmandoporta@gmail.com>
+-- 2016
+
 --
 -- This example is a barebones example for creating an instance of Csound, 
 -- compiling a pre-existing CSD, calling Perform to run Csound to completion,

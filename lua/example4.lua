@@ -1,7 +1,10 @@
 -- Example 4 - Using Csound's Performance Thread 
 -- Author: Steven Yi <stevenyi@gmail.com>
 -- 2013.10.28
---
+-- for lua by:
+-- Francesco Porta <francescoarmandoporta@gmail.com>
+-- 2016
+
 -- In this example, we use a CsoundPerformanceThread to run Csound in 
 -- a native thread.  Using a native thread is important to get the best
 -- runtime performance for the audio engine.  It is especially important
